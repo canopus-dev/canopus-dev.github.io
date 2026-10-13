@@ -1,0 +1,241 @@
+<html>
+<head>
+	<title>.:: PUSTAKA NALAR ::.</title>
+
+	<link rel="stylesheet" href="style1.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<script src="cart.js" defer></script>
+
+</head>
+
+<body>
+	<div class="page-layout">
+  	<aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+          PUSTAKA NALAR
+        </div>
+
+        <a href="home.html" class="menu">Beranda</a>
+
+        <details>
+          <summary>Produk</summary>
+
+          <div class="submenu">
+            <a href="fiction.html">Fiksi</a>
+            <a href="nonfiction.html">Non-Fiksi</a>
+                
+          </div>
+
+        </details>
+
+      
+        <a href="aboutus.html" class="menu">Tentang Kami</a>
+    	<a href="contact.html" class="menu">Kontak</a>
+    	<a href="references.html" class="menu">Kredit</a>
+
+        </aside>
+
+        <div class="page-column">
+        <main class="content">
+          <header class="topnav">
+            <button class="sidebar-toggle" type="button" aria-expanded="true" aria-controls="sidebar">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+              <span class="sr-only">Toggle sidebar</span>
+            </button>
+            <div class="search-container">
+              <form action="/action_page.php">
+                <input type="search" placeholder="Search.." name="search" aria-label="Search">
+                <button type="submit" aria-label="Submit search"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <a href="cart.html" class="ikon-nav-keranjang" aria-label="Keranjang belanja">
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <span id="jumlah-keranjang">0</span>
+            </a>
+          </header>
+        </main>
+
+<!-- CONTENT -->
+	
+
+    <main class="halaman-belanja">
+        <h1>Checkout</h1>
+        <p>Isi data pembeli dan periksa pesanan Anda</p>
+
+        <form id="form-checkout">
+            <section class="bagian-checkout">
+                <h2>1. Data Pembeli</h2>
+
+                <label for="nama">Nama lengkap</label>
+                <input type="text" id="nama" name="nama"
+                    placeholder="Masukkan nama lengkap" required>
+
+                <label for="email">Alamat email</label>
+                <input type="email" id="email" name="email"
+                    placeholder="nama@email.com" required>
+
+                <p class="catatan">
+                    Ebook akan dikirim secara digital setelah pembayaran
+                    terverifikasi pada sistem toko yang sebenarnya.
+                </p>
+            </section>
+
+            <section class="bagian-checkout">
+                <h2>2. Metode Pembayaran</h2>
+
+                <label class="pilihan-pembayaran">
+                    <input type="radio" name="pembayaran"
+                        value="E-Wallet" required>
+                    E-Wallet
+                </label>
+
+                <label class="pilihan-pembayaran">
+                    <input type="radio" name="pembayaran"
+                        value="Transfer Bank">
+                    Transfer Bank
+                </label>
+
+                <label class="pilihan-pembayaran">
+                    <input type="radio" name="pembayaran"
+                        value="Virtual Account">
+                    Virtual Account
+                </label>
+            </section>
+
+            <section class="bagian-checkout">
+                <h2>3. Ringkasan Pesanan</h2>
+                <div id="ringkasan-checkout"></div>
+
+                <div class="baris-total">
+                    <strong>Total pembayaran</strong>
+                    <strong id="total-checkout">Rp0</strong>
+                </div>
+            </section>
+
+            <button type="submit" class="tombol-utama">
+                Buat Pesanan
+            </button>
+        </form>
+
+        <div id="hasil-pesanan" hidden></div>
+    </main>
+
+
+	<script>
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+    sidebarToggle.addEventListener('click', () => {
+      const isOpen = document.body.classList.toggle('sidebar-hidden') === false;
+      sidebarToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    
+function renderCheckout() {
+    const daftar = document.getElementById("ringkasan-checkout");
+    if (!daftar) return;
+
+    const keranjang = ambilKeranjang();
+
+    if (keranjang.length === 0) {
+        daftar.textContent = "Keranjang masih kosong.";
+        document.getElementById("total-checkout").textContent = "Rp0";
+
+        const tombol = document.querySelector(
+            "#form-checkout button[type='submit']"
+        );
+        tombol.disabled = true;
+        return;
+    }
+
+    let total = 0;
+
+    daftar.innerHTML = keranjang.map(item => {
+        const subtotal = item.harga * item.jumlah;
+        total += subtotal;
+
+        return `
+            <div class="baris-total">
+                <span>${item.nama} × ${item.jumlah}</span>
+                <span>${formatRupiah(subtotal)}</span>
+            </div>
+        `;
+    }).join("");
+
+    document.getElementById("total-checkout").textContent =
+        formatRupiah(total);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderCheckout();
+
+    const form = document.getElementById("form-checkout");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const keranjang = ambilKeranjang();
+
+        if (keranjang.length === 0) {
+            alert("Keranjang masih kosong!");
+            return;
+        }
+
+        if (!form.reportValidity()) return;
+
+        const nama = document.getElementById("nama").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const metode = form.querySelector(
+            'input[name="pembayaran"]:checked'
+        ).value;
+
+        const total = keranjang.reduce(
+            (sum, item) => sum + item.harga * item.jumlah, 0
+        );
+
+        const nomorPesanan =
+            "EB-" + Date.now().toString().slice(-8);
+
+        // Simulasi pesanan, bukan pembayaran sungguhan.
+        const hasil = document.getElementById("hasil-pesanan");
+        hasil.hidden = false;
+        hasil.innerHTML = `
+            <h2>Pesanan Berhasil Dibuat!</h2>
+            <p>Nomor pesanan: ${nomorPesanan}</p>
+            <p>Nama pembeli: ${nama}</p>
+            <p>Email: ${email}</p>
+            <p>Metode pembayaran: ${metode}</p>
+            <p>Total: ${formatRupiah(total)}</p>
+            <p>Status: Menunggu pembayaran (simulasi)</p>
+            <p>Belum ada pembayaran yang diproses.</p>
+            <button type="button" class="tombol-utama"
+                onclick="window.location.href='fiction.html'">
+                Kembali ke Katalog
+            </button>
+        `;
+
+        form.hidden = true;
+
+        // Kosongkan keranjang setelah pesanan simulasi dibuat.
+        simpanKeranjang([]);
+    });
+});
+
+  </script>
+
+
+<!-- FOOTER -->
+	<footer>
+		<div class="footer-content">
+			<div class="footer-brand"><strong>PUSTAKA NALAR</strong><p>Temukan cerita favoritmu dalam satu tempat.</p></div>
+			<div class="footer-column"><h3>Pintasan</h3><a href="home.html">Home</a><a href="fiction.html">Fiction</a><a href="ebookmarketplace.html">Marketplace</a></div>
+			<div class="footer-column"><h3>Kontak</h3><a href="mailto:hello@pustakanalar.com">hello@pustakanalar.com</a><a href="tel:+6281234567890">+62 812-3456-7890</a></div>
+			<div class="footer-column"><h3>Ikuti Kami</h3><div class="social-links"><a href="https://www.instagram.com/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.facebook.com/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></div></div>
+		</div>
+		<div class="footer-bottom">&copy; 2025 PUSTAKA NALAR. Semua hak dilindungi.</div>
+	</footer>
+
+
+</body>
+</html>

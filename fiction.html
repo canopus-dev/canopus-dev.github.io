@@ -1,0 +1,353 @@
+<html>
+<head>
+	<title> PRODUCTS: FICTION </title>
+
+	<link rel="stylesheet" href="style1.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<script src="cart.js" defer></script>
+
+</head>
+
+<body>
+  <div class="page-layout">
+  	<aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+          PUSTAKA NALAR
+        </div>
+
+        <a href="home.html" class="menu">Beranda</a>
+
+        <details>
+          <summary>Produk</summary>
+
+          <div class="submenu">
+            <a href="fiction.html">Fiksi</a>
+            <a href="nonfiction.html">Non-Fiksi</a>
+                
+          </div>
+
+        </details>
+
+      
+        <a href="aboutus.html" class="menu">Tentang Kami</a>
+    	<a href="contact.html" class="menu">Kontak</a>
+    	<a href="references.html" class="menu">Kredit</a>
+
+        </aside>
+
+        <div class="page-column">
+        <main class="content">
+          <header class="topnav">
+            <button class="sidebar-toggle" type="button" aria-expanded="true" aria-controls="sidebar">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+              <span class="sr-only">Toggle sidebar</span>
+            </button>
+            <div class="search-container">
+              <form action="/action_page.php">
+                <input type="search" placeholder="Search.." name="search" aria-label="Search">
+                <button type="submit" aria-label="Submit search"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <a href="cart.html" class="ikon-nav-keranjang" aria-label="Keranjang belanja">
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <span id="jumlah-keranjang">0</span>
+            </a>
+          </header>
+        </main>
+
+    	    <!-- CONTENT -->
+    	    <main>
+
+
+
+		<table>
+  <thead>
+    <tr>
+      <th>The Stranger - Albert Camus</th>
+      <th>Thus Spoke Zarathustra - Friedrich Nietzsche</th>
+      <th>Animal Farm - George Orwell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="IMG/the-stranger.jpg" alt="The Stranger - Albert Camus" width="150"></td>
+      <td><img src="IMG/thus-spoke-zarathustra.jpg" alt="Thus Spoke Zarathustra - Friedrich Nietzsche" width="150"></td>
+      <td><img src="IMG/animal-farm.jpg" alt="Animal Farm - George Orwell" width="150"></td>
+    </tr>
+	<tr>
+  <td>Rp10.000</td>
+      <td>Rp15.000</td>
+      <td>Rp12.000</td>
+    </tr>
+    <tr>
+  <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook1', 'The Stranger', 10000, 'IMG/the-stranger.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah The Stranger ke keranjang"
+        onclick="tambahKeranjang('ebook1', 'The Stranger', 10000, 'IMG/the-stranger.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook2', 'Thus Spoke Zarathustra', 15000, 'IMG/thus-spoke-zarathustra.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah Thus Spoke Zarathustra ke keranjang"
+        onclick="tambahKeranjang('ebook2', 'Thus Spoke Zarathustra', 15000, 'IMG/thus-spoke-zarathustra.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook3', 'Animal Farm', 12000, 'IMG/animal-farm.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah Animal Farm ke keranjang"
+        onclick="tambahKeranjang('ebook3', 'Animal Farm', 12000, 'IMG/animal-farm.jpg')">
+        🛒
+    </button>
+      </div></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>The Fall - Albert Camus</th>
+      <th>The Plague - Albert Camus</th>
+      <th>1984 - George Orwell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="IMG/the-fall.jpg" alt="The Fall - Albert Camus" width="150"></td>
+      <td><img src="IMG/the-plague.jpg" alt="The Plague - Albert Camus" width="150"></td>
+      <td><img src="IMG/1984.jpg" alt="1984 - George Orwell" width="150"></td>
+    </tr>
+	<tr>
+  <td>Rp10.000</td>
+      <td>Rp15.000</td>
+      <td>Rp12.000</td>
+    </tr>
+    <tr>
+  <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook4', 'The Fall', 10000, 'IMG/the-fall.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah The Fall ke keranjang"
+        onclick="tambahKeranjang('ebook4', 'The Fall', 10000, 'IMG/the-fall.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook5', 'The Plague', 15000, 'IMG/the-plague.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah The Plague ke keranjang"
+        onclick="tambahKeranjang('ebook5', 'The Plague', 15000, 'IMG/the-plague.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook6', '1984', 12000, 'IMG/1984.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah 1984 ke keranjang"
+        onclick="tambahKeranjang('ebook6', '1984', 12000, 'IMG/1984.jpg')">
+        🛒
+    </button>
+      </div></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>The Bell Jar - Sylvia Plath</th>
+      <th>Crime and Punishment - Fyodor Dostoevsky</th>
+      <th>Anna Karenina - Leo Tolstoy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="IMG/the-bell-jar.jpg" alt="The Bell Jar - Sylvia Plath" width="150"></td>
+      <td><img src="IMG/crime-and-punishment.jpg" alt="Crime and Punishment - Fyodor Dostoevsky" width="150"></td>
+      <td><img src="IMG/anna-karenina.jpg" alt="Anna Karenina - Leo Tolstoy" width="150"></td>
+    </tr>
+	<tr>
+  <td>Rp20.000</td>
+      <td>Rp18.000</td>
+      <td>Rp15.000</td>
+    </tr>
+    <tr>
+  <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook7', 'The Bell Jar', 20000, 'IMG/the-bell-jar.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah The Bell Jar ke keranjang"
+        onclick="tambahKeranjang('ebook7', 'The Bell Jar', 20000, 'IMG/the-bell-jar.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook8', 'Crime and Punishment', 18000, 'IMG/crime-and-punishment.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah Crime and Punishment ke keranjang"
+        onclick="tambahKeranjang('ebook8', 'Crime and Punishment', 18000, 'IMG/crime-and-punishment.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook9', 'Anna Karenina', 15000, 'IMG/anna-karenina.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah Anna Karenina ke keranjang"
+        onclick="tambahKeranjang('ebook9', 'Anna Karenina', 15000, 'IMG/anna-karenina.jpg')">
+        🛒
+    </button>
+      </div></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>War and Peace - Leo Tolstoy</th>
+      <th>Of Mice and Men - John Steinbeck</th>
+      <th>Normal People - Sally Rooney</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="IMG/war-and-peace.jpg" alt="War and Peace - Leo Tolstoy" width="150"></td>
+      <td><img src="IMG/of-mice-and-men.jpg" alt="Of Mice and Men - John Steinbeck" width="150"></td>
+      <td><img src="IMG/normal-people.jpg" alt="Normal People - Sally Rooney" width="150"></td>
+    </tr>
+	<tr>
+  <td>Rp16.000</td>
+      <td>Rp13.000</td>
+      <td>Rp15.000</td>
+    </tr>
+    <tr>
+  <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook10', 'War and Peace', 16000, 'IMG/war-and-peace.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah War and Peace ke keranjang"
+        onclick="tambahKeranjang('ebook10', 'War and Peace', 16000, 'IMG/war-and-peace.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook11', 'Of Mice and Men', 13000, 'IMG/of-mice-and-men.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah Of Mice and Men ke keranjang"
+        onclick="tambahKeranjang('ebook11', 'Of Mice and Men', 13000, 'IMG/of-mice-and-men.jpg')">
+        🛒
+    </button>
+      </div></td>
+      <td><div class="aksi-buku">
+    <button class="tombol-beli"
+        onclick="beliSekarang('ebook12', 'Normal People', 15000, 'IMG/normal-people.jpg')">
+        Beli
+    </button>
+
+    <button class="tombol-keranjang"
+        aria-label="Tambah Normal People ke keranjang"
+        onclick="tambahKeranjang('ebook12', 'Normal People', 15000, 'IMG/normal-people.jpg')">
+        🛒
+    </button>
+      </div></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+	    </main>
+        </div>
+  </div>
+
+  <script>
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+    sidebarToggle.addEventListener('click', () => {
+      const isOpen = document.body.classList.toggle('sidebar-hidden') === false;
+      sidebarToggle.setAttribute('aria-expanded', isOpen);
+    });
+  </script>
+
+
+<!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <strong>PUSTAKA NALAR</strong>
+                <p>Temukan cerita favoritmu dalam satu tempat.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Pintasan</h3>
+                <a href="home.html">Beranda</a>
+                <a href="fiction.html">Fiksi</a>
+                <a href="nonfiction.html">Non-Fiksi</a>
+            </div>
+            <div class="footer-column">
+                <h3>Kontak</h3>
+                <a href="mailto:info@pustakanalar.com">info@pustakanalar.com</a>
+                <a href="tel:+6281234567890">+62 812-0009-0001</a>
+            </div>
+            <div class="footer-column">
+                <h3>Ikuti Kami</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2025 PUSTAKA NALAR.</div>
+    </footer>
+
+
+</body>
+</html>
